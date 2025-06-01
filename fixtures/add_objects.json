@@ -1,0 +1,241 @@
+[
+    {
+        "model": "cash_flow.subfield",
+        "pk": 1,
+        "fields": {
+            "name": "Активный"
+        }
+    },
+    {
+        "model": "cash_flow.subfield",
+        "pk": 2,
+        "fields": {
+            "name": "Завершенный"
+        }
+    },
+    {
+        "model": "cash_flow.subfield",
+        "pk": 3,
+        "fields": {
+            "name": "Отмененный"
+        }
+    },
+    {
+        "model": "cash_flow.subfield",
+        "pk": 4,
+        "fields": {
+            "name": "Доход"
+        }
+    },
+    {
+        "model": "cash_flow.subfield",
+        "pk": 5,
+        "fields": {
+            "name": "Расход"
+        }
+    },
+    {
+        "model": "cash_flow.subfield",
+        "pk": 6,
+        "fields": {
+            "name": "Инвестиции"
+        }
+    },
+    {
+        "model": "cash_flow.subfield",
+        "pk": 7,
+        "fields": {
+            "name": "Еда"
+        }
+    },
+    {
+        "model": "cash_flow.subfield",
+        "pk": 8,
+        "fields": {
+            "name": "Зарплата"
+        }
+    },
+    {
+        "model": "cash_flow.subfield",
+        "pk": 9,
+        "fields": {
+            "name": "Образование"
+        }
+    },
+    {
+        "model": "cash_flow.subfield",
+        "pk": 10,
+        "fields": {
+            "name": "Фастфуд"
+        }
+    },
+    {
+        "model": "cash_flow.subfield",
+        "pk": 11,
+        "fields": {
+            "name": "Годовая премия"
+        }
+    },
+    {
+        "model": "cash_flow.subfield",
+        "pk": 12,
+        "fields": {
+            "name": "Еженедельный бонус"
+        }
+    },
+    {
+        "model": "cash_flow.status",
+        "pk": 1,
+        "fields": {
+            "name": "Активный"
+        }
+    },
+    {
+        "model": "cash_flow.status",
+        "pk": 2,
+        "fields": {
+            "name": "Завершенный"
+        }
+    },
+    {
+        "model": "cash_flow.status",
+        "pk": 3,
+        "fields": {
+            "name": "Отмененный"
+        }
+    },
+    {
+        "model": "cash_flow.type",
+        "pk": 4,
+        "fields": {
+            "name": "Доход"
+        }
+    },
+    {
+        "model": "cash_flow.type",
+        "pk": 5,
+        "fields": {
+            "name": "Расход"
+        }
+    },
+    {
+        "model": "cash_flow.type",
+        "pk": 6,
+        "fields": {
+            "name": "Инвестиции"
+        }
+    },
+    {
+        "model": "cash_flow.category",
+        "pk": 7,
+        "fields": {
+            "name": "Еда",
+            "parent_type": 5
+        }
+    },
+    {
+        "model": "cash_flow.category",
+        "pk": 8,
+        "fields": {
+            "name": "Зарплата",
+            "parent_type": 4
+        }
+    },
+    {
+        "model": "cash_flow.category",
+        "pk": 9,
+        "fields": {
+            "name": "Образование",
+            "parent_type": 6
+        }
+    },
+    {
+        "model": "cash_flow.subcategory",
+        "pk": 10,
+        "fields": {
+            "name": "Фастфуд",
+            "parent_category": 7
+        }
+    },
+    {
+        "model": "cash_flow.subcategory",
+        "pk": 11,
+        "fields": {
+            "name": "годовая премия",
+            "parent_category": 8
+        }
+    },
+    {
+        "model": "cash_flow.subcategory",
+        "pk": 12,
+        "fields": {
+            "name": "еженедельный бонус",
+            "parent_category": 8
+        }
+    },
+    {
+        "model": "cash_flow.cashflow",
+        "pk": 1,
+        "fields": {
+            "created_at": "2025-05-01",
+            "status": 2,
+            "type": 5,
+            "category": 7,
+            "category_sub": 10,
+            "count": 350,
+            "comment": "MCD"
+        }
+    },
+    {
+        "model": "cash_flow.cashflow",
+        "pk": 2,
+        "fields": {
+            "created_at": "2025-05-01",
+            "status": 1,
+            "type": 4,
+            "category": 8,
+            "category_sub": 11,
+            "count": 2000,
+            "comment": "Зарплата за июль"
+        }
+    },
+    {
+        "model": "cash_flow.cashflow",
+        "pk": 3,
+        "fields": {
+            "created_at": "2025-05-02",
+            "status": 2,
+            "type": 5,
+            "category": 7,
+            "category_sub": 10,
+            "count": 150,
+            "comment": "Обед в кафе"
+        }
+    },
+    {
+        "model": "cash_flow.cashflow",
+        "pk": 5,
+        "fields": {
+            "created_at": "2025-05-04",
+            "status": 3,
+            "type": 4,
+            "category": 8,
+            "category_sub": 11,
+            "count": 300,
+            "comment": "Ошибка в расчетах"
+        }
+    },
+    {
+        "model": "cash_flow.cashflow",
+        "pk": 6,
+        "fields": {
+            "created_at": "2025-05-05",
+            "status": 1,
+            "type": 5,
+            "category": 7,
+            "category_sub": 10,
+            "count": 100,
+            "comment": "Покупка кефира"
+        }
+    }
+]
