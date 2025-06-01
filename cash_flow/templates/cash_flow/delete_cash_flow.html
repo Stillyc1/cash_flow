@@ -1,0 +1,25 @@
+{% extends 'cash_flow/includes/basic_design.html' %}
+{% block title %}
+    Удалить запись
+{% endblock %}
+{% block header %}
+    {% include 'cash_flow/includes/header_menu.html' %}
+{% endblock %}
+{% block content %}
+<form method="post" action="" class="form-floating mt-4">
+    {% csrf_token %}
+    <div class="row text-center">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h1 class="my-0 font-weight-normal">Вы точно хотите удалить запись?</h1>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mt-3 mb-4 text-start m-3 text-center">
+                    <button type="submit" class="btn btn-lg btn-block btn-outline-success">Подтвердить</button>
+                    <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'cash_flow:main' %}">Отменить</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
