@@ -14,5 +14,6 @@ urlpatterns = [
     path("reference_books/", ReferenceBooksListView.as_view(), name="reference_books"),
     path("reference_books_cud/<int:pk>/<str:model>/", ReferenceBooksUpdateView.as_view(), name="reference_books_cud"),
     path("reference_books_cud/new/<str:model>/", ReferenceBooksCreateView.as_view(), name="reference_books_new"),
-    path("reference_books_cud/delete/<int:pk>/<str:model>/", ReferenceBooksDeleteView.as_view(), name="reference_books_delete"),
+    path("reference_books_cud/delete/<int:pk>/<str:model>/", ReferenceBooksDeleteView.as_view(),
+         name="reference_books_delete"),
 ]
