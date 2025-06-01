@@ -1,19 +1,20 @@
-from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
-from django.views import View
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from cash_flow.forms import CashFlowForm, StatusForm, TypeForm, CategoryForm, SubCategoryForm
-from cash_flow.models import CashFlow, Status, Type, Category, SubCategory
+from cash_flow.forms import CashFlowForm
+from cash_flow.models import CashFlow, Category, Status, SubCategory, Type
 from cash_flow.services import get_model_and_form_class
 
 
 class MainListView(ListView):
+    """Главная страница со всеми записями ДДС, с возможностью фильтрации."""
+
     model = CashFlow
     template_name = "cash_flow/main.html"
     context_object_name = "cash_flows"
 
     def get_context_data(self, *, object_list=None, **kwargs):
+        """Передаем в форму объекты для фильтрации."""
         context = super().get_context_data(**kwargs)
 
         context["status"] = Status.objects.all()
@@ -27,32 +28,34 @@ class MainListView(ListView):
         queryset = super().get_queryset()
 
         # Фильтрация по дате
-        start_date = self.request.GET.get('start_date')
-        end_date = self.request.GET.get('end_date')
+        start_date = self.request.GET.get("start_date")
+        end_date = self.request.GET.get("end_date")
         if start_date and end_date:
             queryset = queryset.filter(created_at__range=[start_date, end_date])
 
         # Фильтрация по статусу
-        status = self.request.GET.get('status')
+        status = self.request.GET.get("status")
         if status:
             queryset = queryset.filter(status__name=status)
 
         # Фильтрация по типу
-        type_ = self.request.GET.get('type')
+        type_ = self.request.GET.get("type")
         if type_:
             queryset = queryset.filter(type__name=type_)
 
         # Фильтрация по категории
-        category = self.request.GET.get('category')
+        category = self.request.GET.get("category")
         if category:
             queryset = queryset.filter(category__name=category)
 
         # Фильтрация по подкатегории
-        subcategory = self.request.GET.get('subcategory')
+        subcategory = self.request.GET.get("subcategory")
         if subcategory:
             queryset = queryset.filter(category_sub__name=subcategory)
 
-        return sorted(queryset, key=lambda x: x.created_at, reverse=True)  # Сортируем объекты по дате
+        return sorted(
+            queryset, key=lambda x: x.created_at, reverse=True
+        )  # Сортируем объекты по дате
 
 
 class CashFlowCreateView(CreateView):
@@ -75,6 +78,8 @@ class CashFlowDeleteView(DeleteView):
 
 
 class ReferenceBooksListView(ListView):
+    """Представление всех справочников (Статусы, Типы, Категории, Подкатегории)."""
+
     model = Status
     template_name = "cash_flow/reference_books.html"
 
@@ -90,6 +95,12 @@ class ReferenceBooksListView(ListView):
 
 
 class ReferenceBooksCreateView(CreateView):
+    """
+    Создание объектов справочника,
+    model и form_class динамически подставляется
+    для каждого объекта справочника.
+    """
+
     template_name = "cash_flow/reference_books_cud.html"
     model = None
     form_class = None
@@ -97,7 +108,6 @@ class ReferenceBooksCreateView(CreateView):
 
     def get(self, request, *args, **kwargs):
         self.model, _ = get_model_and_form_class(f"{kwargs.get('model')}")
-
         return super().get(request, *args, **kwargs)
 
     def get_form_class(self):
@@ -106,6 +116,12 @@ class ReferenceBooksCreateView(CreateView):
 
 
 class ReferenceBooksUpdateView(UpdateView):
+    """
+    Изменение объектов справочника,
+    model и form_class динамически подставляется
+    для каждого объекта справочника.
+    """
+
     template_name = "cash_flow/reference_books_cud.html"
     model = None
     form_class = None
@@ -125,6 +141,12 @@ class ReferenceBooksUpdateView(UpdateView):
 
 
 class ReferenceBooksDeleteView(DeleteView):
+    """
+    Удаление объектов справочника,
+    model и form_class динамически подставляется
+    для каждого объекта справочника.
+    """
+
     model = None
     template_name = "cash_flow/reference_books_delete.html"
     success_url = reverse_lazy("cash_flow:reference_books")
