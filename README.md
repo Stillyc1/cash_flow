@@ -47,9 +47,9 @@
 ## Функциональность
 
 ### Пользовательский интерфейс
-1. [Главная страница](screenshots/main.png)
-2. [Создать запись](screenshots/create_cash_flow.png)
-3. [Справочники](screenshots/reference_books.png)
+1. [Главная страница](https://drive.google.com/file/d/1eDpFeEA-imErDx0KhhTWgbnC07sbMaGu/view?usp=sharing)
+2. [Создать запись](https://drive.google.com/file/d/1kQGDHI3j3MPIIsZfU5GfW71-7A81NAWE/view?usp=sharing)
+3. [Справочники](https://drive.google.com/file/d/11WjY_Hd7Mgp7N4ynhzF38mQknSfAhGLG/view?usp=sharing)
 
 ## Технологии
 - Python 3.12
